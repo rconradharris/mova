@@ -4,14 +4,19 @@ MOVA_ENVIRONMENT_PATH=~/.mova
 MOVA_CURRENT_PATH=~/.mova-current
 
 function mova() {
+    # Read current environment
     local current=
     if [[ -e $MOVA_CURRENT_PATH ]]; then
         current=$(cat $MOVA_CURRENT_PATH)
     fi
+
+    # Ensure directory containing `novarc` files exists
     if [[ ! -e $MOVA_ENVIRONMENT_PATH ]]; then
         echo Mova environment path $MOVA_ENVIRONMENT_PATH doesn\'t exist, please create it...
         return 1
     fi
+
+    # List environments
     if [[ -z $1 ]]; then
         for e in `ls $MOVA_ENVIRONMENT_PATH`; do
             if [[ $e = $current ]]; then
@@ -22,6 +27,8 @@ function mova() {
         done
         return
     fi
+
+    # Change current environment
     if [[ $1 = use ]]; then
         if [[ -z $2 ]]; then
             echo "usage: mova use <env>"
@@ -30,16 +37,22 @@ function mova() {
         echo $2 > $MOVA_CURRENT_PATH
         return
     fi
+
+    # Ensure environment was specified
     if [[ -z $current ]]; then
         echo No current environment specified, try 'mova use <env>'.
         return 1
     fi
+
+    # Run nova command under current environment
     env $(cat $MOVA_ENVIRONMENT_PATH/$current| tr '\n' ' ') nova $*
 }
 
 function _mova() {
     local prev=${COMP_WORDS[COMP_CWORD-1]}
     local cur=${COMP_WORDS[COMP_CWORD]}
+
+    # Allow tab-completion for environment names
     if [[ $prev = use ]]; then
         COMPREPLY=$(compgen -W "$(ls $MOVA_ENVIRONMENT_PATH)" -- $cur)
         return 0

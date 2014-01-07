@@ -7,7 +7,7 @@ mova - Multi-homed Nova command-line client wrapper
 Description
 ===========
 
-`mova` is a very lightweight wrapper around `nova` that allows you to work
+``mova`` is a very lightweight wrapper around ``nova`` that allows you to work
 with multiple environments.
 
 Features
@@ -16,7 +16,7 @@ Features
 - Stateful: You don't have to specify the environment for each command, just
   specify it once each time you change environments
 - Tab-completion: Nova's tab-completion still works
-- Uses Nova's standard `novarc` files, just place them in ~/.mova/ with
+- Uses Nova's standard ``novarc`` files, just place them in ``~/.mova/`` with
   descriptive names like 'prod' and 'dev'
 - Single bash file
 
@@ -24,9 +24,9 @@ Features
 Setup
 =====
 
-- Create ~/.mova directory
-- Copy existing `novarc` files into it, giving them descriptive file names
-- Source `mova` or add it to your `bashrc`
+- Add ``mova`` to your ``bashrc``
+- Create ``~/.mova`` directory
+- Copy existing ``novarc`` files into it, giving them descriptive file names
 
 
 List Available Environments

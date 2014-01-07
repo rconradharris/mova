@@ -10,6 +10,9 @@ Description
 ``mova`` is a very lightweight wrapper around ``nova`` that allows you to work
 with multiple environments.
 
+``mova`` serves the same purpose as the excellent `supernova
+<https://github.com/major/supernova>`_ utility, but differs in a few key ways.
+
 Features
 ========
 

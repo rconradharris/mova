@@ -7,10 +7,11 @@ mova - Multi-homed Nova command-line client wrapper
 Description
 ===========
 
-``mova`` is a very lightweight wrapper around ``nova`` that allows you to work
+``mova`` is a very lightweight wrapper around `nova
+<https://github.com/openstack/python-novaclient>`_ that allows you to work
 with multiple environments.
 
-``mova`` serves the same purpose as the excellent `supernova
+mova serves the same purpose as the excellent `supernova
 <https://github.com/major/supernova>`_ utility, but differs in a few key ways.
 
 Features

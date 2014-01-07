@@ -1,0 +1,50 @@
+# mova - Multi-homed Nova command-line client wrapper
+
+MOVA_ENVIRONMENT_PATH=~/.mova
+MOVA_CURRENT_PATH=~/.mova-current
+
+function mova() {
+    local current=
+    if [[ -e $MOVA_CURRENT_PATH ]]; then
+        current=$(cat $MOVA_CURRENT_PATH)
+    fi
+    if [[ ! -e $MOVA_ENVIRONMENT_PATH ]]; then
+        echo Mova environment path $MOVA_ENVIRONMENT_PATH doesn\'t exist, please create it...
+        return 1
+    fi
+    if [[ -z $1 ]]; then
+        for e in `ls $MOVA_ENVIRONMENT_PATH`; do
+            if [[ $e = $current ]]; then
+                echo "$e (current)"
+            else
+                echo "$e"
+            fi
+        done
+        return
+    fi
+    if [[ $1 = use ]]; then
+        if [[ -z $2 ]]; then
+            echo "usage: mova use <env>"
+            return 1
+        fi
+        echo $2 > $MOVA_CURRENT_PATH
+        return
+    fi
+    if [[ -z $current ]]; then
+        echo No current environment specified, try 'mova use <env>'.
+        return 1
+    fi
+    env $(cat $MOVA_ENVIRONMENT_PATH/$current| tr '\n' ' ') nova $*
+}
+
+function _mova() {
+    local prev=${COMP_WORDS[COMP_CWORD-1]}
+    local cur=${COMP_WORDS[COMP_CWORD]}
+    if [[ $prev = use ]]; then
+        COMPREPLY=$(compgen -W "$(ls $MOVA_ENVIRONMENT_PATH)" -- $cur)
+        return 0
+    fi
+    _nova
+}
+
+complete -F _mova mova

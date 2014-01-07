@@ -1,6 +1,8 @@
-===================================================
+====
+mova
+====
+
 mova - Multi-homed Nova command-line client wrapper
-===================================================
 
 Description
 ===========
@@ -31,6 +33,7 @@ List Available Environments
 ===========================
 
 ::
+
     $ mova
     dev
     lab
@@ -41,6 +44,7 @@ Change Current Environment
 ==========================
 
 ::
+
     $ mova use dev
 
 
@@ -48,6 +52,7 @@ Run Nova Command Under Current Environment
 ==========================================
 
 ::
+
     $ mova list
     $ mova image-list
 

@@ -17,12 +17,12 @@ mova serves the same purpose as the excellent `supernova
 Features
 ========
 
-- Stateful: You don't have to specify the environment for each command, just
+- **Stateful**: You don't have to specify the environment for each command, just
   specify it once each time you change environments
-- Tab-completion: Nova's tab-completion still works
-- Uses Nova's standard ``novarc`` files, just place them in ``~/.mova/`` with
+- **Tab-completion**: Nova's tab-completion still works
+- **Standard**: Uses Nova's standard ``novarc`` files, just place them in ``~/.mova/`` with
   descriptive names like 'prod' and 'dev'
-- Single bash file
+- **Simple**: Single bash file
 
 
 Setup

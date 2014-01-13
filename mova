@@ -57,7 +57,10 @@ function _mova() {
         COMPREPLY=$(compgen -W "$(ls $MOVA_ENVIRONMENT_PATH)" -- $cur)
         return 0
     fi
-    _nova
+
+    # Call Nova's tab-completion handler if it's installed
+    declare -f _nova > /dev/null
+    [[ $? -eq 0 ]] && _nova
 }
 
 complete -F _mova mova

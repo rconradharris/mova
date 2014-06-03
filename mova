@@ -54,7 +54,7 @@ function _mova() {
 
     # Allow tab-completion for environment names
     if [[ $prev = use ]]; then
-        COMPREPLY=$(compgen -W "$(ls $MOVA_ENVIRONMENT_PATH)" -- $cur)
+        COMPREPLY=($(compgen -W "$(ls $MOVA_ENVIRONMENT_PATH)" -- $cur))
         return 0
     fi
 

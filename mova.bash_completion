@@ -1,0 +1,17 @@
+# Source this file directly...
+function _mova() {
+    local prev=${COMP_WORDS[COMP_CWORD-1]}
+    local cur=${COMP_WORDS[COMP_CWORD]}
+
+    # Allow tab-completion for environment names
+    if [[ $prev = use ]]; then
+        COMPREPLY=($(compgen -W "$(ls $MOVA_ENVIRONMENT_PATH)" -- $cur))
+        return 0
+    fi
+
+    # Call Nova's tab-completion handler if it's installed
+    declare -f _nova > /dev/null
+    [[ $? -eq 0 ]] && _nova
+}
+
+complete -F _mova mova

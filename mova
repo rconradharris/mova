@@ -1,12 +1,13 @@
+#!/usr/bin/env bash
 # mova - Multi-homed Nova command-line client wrapper
 
-if [[ -z $MOVA_ENVIRONMENT_PATH ]]; then
-    MOVA_ENVIRONMENT_PATH=~/.mova
+if [[ -z $MOVA_PATH ]]; then
+    MOVA_PATH=~/.mova
 fi
 
-if [[ -z $MOVA_CURRENT_PATH ]]; then
-    MOVA_CURRENT_PATH=~/.mova-current
-fi
+MOVA_ENVIRONMENT_PATH=$MOVA_PATH/environments
+MOVA_CURRENT_PATH=$MOVA_PATH/current
+
 
 # Read current environment
 current=

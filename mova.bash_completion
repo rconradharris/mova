@@ -1,6 +1,8 @@
-if [[ -z $MOVA_ENVIRONMENT_PATH ]]; then
-    MOVA_ENVIRONMENT_PATH=~/.mova
+if [[ -z $MOVA_PATH ]]; then
+    MOVA_PATH=~/.mova
 fi
+
+MOVA_ENVIRONMENT_PATH=$MOVA_PATH/environments
 
 # Source this file directly...
 function _mova() {

@@ -1,7 +1,12 @@
 # mova - Multi-homed Nova command-line client wrapper
 
-MOVA_ENVIRONMENT_PATH=~/.mova
-MOVA_CURRENT_PATH=~/.mova-current
+if [[ -z $MOVA_ENVIRONMENT_PATH ]]; then
+    MOVA_ENVIRONMENT_PATH=~/.mova
+fi
+
+if [[ -z $MOVA_CURRENT_PATH ]]; then
+    MOVA_CURRENT_PATH=~/.mova-current
+fi
 
 # Read current environment
 current=

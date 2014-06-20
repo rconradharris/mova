@@ -1,3 +1,7 @@
+if [[ -z $MOVA_ENVIRONMENT_PATH ]]; then
+    MOVA_ENVIRONMENT_PATH=~/.mova
+fi
+
 # Source this file directly...
 function _mova() {
     local prev=${COMP_WORDS[COMP_CWORD-1]}
